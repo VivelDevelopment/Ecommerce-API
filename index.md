@@ -1,4 +1,4 @@
-## Welcome to Copypasta free cood page
+## Welcome to Copypasta free code page
 
 
 ### Hello there 
