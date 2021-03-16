@@ -1,4 +1,4 @@
-# API with golang
+# Ecommerce API with golang
 ### Prerequisites
 - Have Go installed. If not, check it out here
 https://golang.org/
