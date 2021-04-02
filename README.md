@@ -1,14 +1,14 @@
-# Ecommerce API with Golang  
-### Prerequisites
-- Have Go installed. If you don't have it, download it here
-https://golang.org/
+<h1 align="center">Ecommerce API in Go</h1>
 
-- Also after installing, make sure you are working inside your GOPATH
-- If you confused read docs 
- https://golang.org/doc/
+<h1 align="center">Getting started</h1>
+<h2 align="center">Deploying via Docker</h2>
 
-### Important 
-- When you are done with the file and finish copypasta, go build server.go
-- Then it will make a .exe (Executable file), double click on it to open it!
+```
+docker build -t ec-api .
+```
 
-### ECommerce-API is owned and Maintained by Vivel Development, please abide by the License!
+```
+docker run --rm -it -p 8080:8080 ex-api
+```
+
+<p>ECommerce-API is owned and Maintained by Vivel Development, please abide by the License!</p>
