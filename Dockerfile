@@ -1,7 +1,10 @@
-FROM golang:1.16-alpine
+FROM golang:latest AS builder
 
-WORKDIR /app
 ADD . /app
-EXPOSE 8080
-RUN go build -o main .
+WORKDIR /app
+RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/server/main.go
+
+FROM alpine:latest AS production
+COPY --from=builder /app .
 CMD [ "./main" ]
+EXPOSE 8080

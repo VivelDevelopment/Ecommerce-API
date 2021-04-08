@@ -4,11 +4,7 @@
 <h2 align="center">Deploying via Docker</h2>
 
 ```
-docker build -t ec-api .
-```
-
-```
-docker run --rm -it -p 8080:8080 ex-api
+docker-compose up --build
 ```
 
 <p>ECommerce-API is owned and Maintained by Vivel Development, please abide by the License!</p>

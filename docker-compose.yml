@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  api_service:
+    build: .
+    container_name: "api"
+    environment:
+      - DB_USERNAME=vivel
+      - DB_PASSWORD=vivelsecret # Obviously not the password
+      - DB_HOST=database
+      - DB_NAME=vivel
+      - DB_PORT=5432
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    networks:
+      - api
+
+  database:
+    image: postgres:alpine # A nice lightweight image for PostgreSQL
+    container_name: "api_database"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=vivel
+      - POSTGRES_USER=vivel
+      - POSTGRES_PASSWORD=vivelsecret # Obviously not the password
+    volumes:
+      - database_postgres:/app
+    networks:
+      - api
+
+volumes:
+  database_postgres:
+
+networks:
+  api:
+    driver: bridge
