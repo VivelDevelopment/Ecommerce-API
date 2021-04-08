@@ -2,8 +2,21 @@
 package http
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/gorilla/mux"
 )
+
+// SetupHandler - sets up the handler
+func SetupHandler() error {
+	log.Println("Starting API handler on :8080")
+	if err := http.ListenAndServe(":8080", Handle()); err != nil {
+		log.Fatal("Failed to start up API service")
+		return err
+	}
+	return nil
+}
 
 // Handler - returns a pointer to a mux router
 func Handle() *mux.Router {
