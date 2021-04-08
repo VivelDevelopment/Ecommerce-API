@@ -1,4 +1,4 @@
-package api
+package http
 
 import (
 	"encoding/json"
@@ -8,17 +8,6 @@ import (
 
 	"github.com/gorilla/mux"
 )
-
-/*
-
-This is never used, so we'll comment it out.
-
-type PageVariables struct {
-	Date string
-	Time string
-}
-
-*/
 
 type Item struct {
 	ID          string `json:"ID"`
@@ -63,14 +52,18 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 func CreateItem(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var newItem Item
-	reqBody, err := ioutil.ReadAll(r.Body) // Convert r.Body into a readable format
+	// Convert r.Body into a readable format
+	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "BRUH enter data with the event id, title and description only in order to update")
 	}
 	json.Unmarshal(reqBody, &newItem)
-	Items = append(Items, newItem)     // Add the newly created event to the array of events
-	w.WriteHeader(http.StatusCreated)  // Return the 201 created status code
-	json.NewEncoder(w).Encode(newItem) // Return the newly created event
+	// Add the newly created event to the array of events
+	Items = append(Items, newItem)
+	// Return the 201 created status code
+	w.WriteHeader(http.StatusCreated)
+	// Return the newly created event
+	json.NewEncoder(w).Encode(newItem)
 }
 
 func GetOneItem(w http.ResponseWriter, r *http.Request) {
@@ -96,7 +89,8 @@ func UpdateItem(w http.ResponseWriter, r *http.Request) {
 	// Get the "id" URL query
 	ItemID := mux.Vars(r)["id"]
 	var updatedItem Item
-	reqBody, err := ioutil.ReadAll(r.Body) // Convert r.Body into a readable format
+	// Convert r.Body into a readable format
+	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "BRUH enter data with the event title and description only in order to update")
 	}
