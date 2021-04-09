@@ -1,7 +1,7 @@
 package main
 
 import (
-	transportDB "github.com/VivelDevelopment/Ecommerce-API/internal/transport/database"
+	transportDB "github.com/VivelDevelopment/Ecommerce-API/internal/database"
 	transportHTTP "github.com/VivelDevelopment/Ecommerce-API/internal/transport/http"
 )
 
